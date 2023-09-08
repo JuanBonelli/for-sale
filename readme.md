@@ -1,18 +1,76 @@
-## Proyecto base TypeScript
+abstract class Inmueble{
+    operacion : Operacion;
+    ambientes : number;
+    dimension : number;
+    estado : Estado;
+    valor: number;
+    zona: Zona;
+    abstract function calcularValorInmueble();
+    abstract function cambiarEstado();
 
-### Requisitos
-1. Entorno de [Node.js](https://nodejs.org/en "Node.js") instalado
-2. Gestor de Dependencias [NPM](https://www.npmjs.com/ "NPM") instalado
-3. Algún IDE para editar el código. Recomendado: [Visual Studio Code](https://code.visualstudio.com/ "Visual Studio Code") o [WebStorm](https://www.jetbrains.com/es-es/webstorm/ "WebStorm")
+}
 
-### Ejecución
-1. Clonar el repositorio
-2. Situados en la raíz del proyecto, instalar todas las dependencias: `npm install`
-3. Ejecutar el index: `npm start` Si no se cambia el código inicial, se deberá ver un "Hola TS!" por la consola
-4. Ejecutar los tests: `npm test` 
+class PH extends Inmueble {
+    function calcularValorInmueble();
+}
 
-### ¿Dónde escribo mi código?
-El proyecto está inspirado según el orden que plantea Maven, gestor de Dependencias para Java:
-- Todo la lógica de negocio/dominio debe escribirse dentro de la carpeta `src/main`. Se sugiere crear subcarpetas dentro de la mencionada anteriormente para una mayor prolijidad.
-- Todos los tests deben escribirse dentro de `src/test`. Se recomienda crear un archivo por cada clase TS que se quiera testear.
-- La lógica de ejecución del componente debe escribirse en el archivo `src/index.ts`, el cual se ejecuta cuando se corre el comando `npm start`
+class Casa extends Inmueble {
+    function calcularValorInmueble();
+}
+
+class Departamento extends Inmueble {
+    function calcularValorInmueble();
+}
+
+abstract class Operacion {
+    cliente : Cliente;
+    comision : number;
+    inmueble : Inmueble;
+    empleado: Empleado
+    abstract function calcularComision();
+}
+
+class Alquiler extends Operacion {
+    descripcion : "Alquiler"
+    meses: number;
+    function calcularComision();
+    
+}
+
+class Venta extends Operacion {
+    descripcion : "Venta"
+    private static comision : number;
+    function calcularComision();
+}
+
+class Estado {
+    nombre : string;
+
+}
+
+class Reserva extend Estado {
+    function cambiarEstado();
+
+}
+
+class Concretacion extends Estado {
+    function cambiarEstado();
+}
+
+class Zona {
+    nombre : nombreZona;
+    valorExtra : number;
+
+}
+
+class Empleado {
+    nombre: string;
+    operaciones : Operacion[];
+    
+}
+
+class Cliente {
+    nombre: string;
+    operaciones : Operacion[];
+
+}
