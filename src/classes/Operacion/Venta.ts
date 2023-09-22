@@ -17,6 +17,8 @@ export class Venta extends Operacion {
     }
 
     public calcularComision(): number {
+
+    
         return (this.inmueble.calcularValorFinal() * Venta.porcentajeGanancia) / 100;
 
     }

@@ -1,3 +1,4 @@
+import { Console } from "console";
 import { Empleado } from "../Empleado";
 import { Operacion } from "../Operacion/Operacion";
 import { Zona } from "../Zona";

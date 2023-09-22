@@ -5,8 +5,8 @@ export class Empleado {
     private nombre: string;
     private dni: string;
     private operaciones: Operacion[];
-    private reservas : Estado[];
-    private concretadas : Estado[];
+    private reservas : Operacion[];
+    private concretadas : Operacion[];
 
     constructor() {
         this.operaciones = [];
@@ -26,16 +26,20 @@ export class Empleado {
         this.operaciones.push(operacion);
     }
 
-    public asignarReserva(reserva : Estado) {
-        this.reservas.push(reserva)
+    public asignarReserva(operacion : Operacion) {
+        this.reservas.push(operacion)
     }
 
-    public asignarConcretada(concretada : Estado) {
-        this.concretadas.push(concretada);
+    public asignarConcretada(operacion : Operacion) {
+        this.concretadas.push(operacion);
     }
 
     public obtenerTotalComisiones() : number  {
-        return this.operaciones.reduce((accum, operacion) => accum + operacion.calcularComision(), 0);
+        return this.concretadas.reduce((accum, operacion) => accum + operacion.calcularComision(), 0);
+    }
+
+    public getOperacionesConcretadas() : Operacion[] {
+        return this.concretadas;
     }
 
     public obtenerConcreatadas() : number {
@@ -44,6 +48,10 @@ export class Empleado {
 
     public obtenerReservas () : number {
         return this.reservas.length;
+    }
+
+    public getDni() : string {
+        return this.dni;
     }
 
 }

@@ -1,0 +1,16 @@
+@startuml DiagramaClases
+
+interface CriterioRanking {
+    mejorEmplead(empleado : Empleado);
+}
+
+class RankingEmpleados{
+    private criterio: CriterioRanking;
+}
+
+class Criterio1 implements CriterioRanking{}
+class Criterio2 implements CriterioRanking{}
+class Criterio3 implements CriterioRanking{}
+
+
+@enduml

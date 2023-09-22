@@ -9,7 +9,7 @@ export abstract class Operacion {
     private cliente : Cliente;
     private empleado: Empleado;
     protected inmueble : Inmueble;
-    private estado: Estado = new Publicacion();
+    protected estado: Estado = new Publicacion();
     
     public abstract calcularComision() : number;
 
@@ -31,6 +31,22 @@ export abstract class Operacion {
 
     public cambiarEstado(estado: Estado) {
         this.estado = estado;
+    }
+
+    public getInmueble() : Inmueble {
+        return this.inmueble;
+    }
+
+    public getEstado() : Estado {
+        return this.estado;
+    }
+
+    public reservar() {
+        this.estado.reservar(this.cliente, this.empleado, this);
+    }
+
+    public concretar() {
+        this.estado.concretar(this.cliente, this.empleado, this);
     }
 
 

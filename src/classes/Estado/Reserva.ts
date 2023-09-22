@@ -9,14 +9,14 @@ export class Reserva extends Estado {
         super();       
     }
 
-    protected reservar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
+    public reservar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
         throw new Error("Este inmueble ya esta reservado");
     }
 
-    protected concretar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
+    public concretar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
         if(this.cliente === cliente) {
             operacion.cambiarEstado(new Concretacion());
-            this.empleado.asignarConcretada(this);
+            this.empleado.asignarConcretada(operacion);
 
         }
     }

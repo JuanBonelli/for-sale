@@ -10,20 +10,20 @@ export class Publicacion extends Estado {
         super();   
     }
 
-    protected reservar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
+    public reservar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
         operacion.cambiarEstado(new Reserva());
         this.cliente = cliente;
         this.empleado = empleado;
 
-        this.empleado.asignarReserva(this);
+        this.empleado.asignarReserva(operacion);
 
     }
-    protected concretar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
+    public concretar(cliente: Cliente, empleado: Empleado, operacion: Operacion): void {
         operacion.cambiarEstado(new Concretacion());
         this.cliente = cliente;
         this.empleado = empleado;
 
-        this.empleado.asignarConcretada(this);
+        this.empleado.asignarConcretada(operacion);
     }
    
 }

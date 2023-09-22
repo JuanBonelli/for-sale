@@ -7,8 +7,8 @@ export abstract class Estado {
     protected cliente : Cliente;
     protected empleado : Empleado;
 
-    protected abstract reservar(cliente : Cliente, empleado : Empleado, operacion : Operacion) : void;
-    protected abstract concretar(cliente : Cliente, empleado : Empleado, operacion : Operacion) : void;
+    public abstract reservar(cliente : Cliente, empleado : Empleado, operacion : Operacion) : void;
+    public abstract concretar(cliente : Cliente, empleado : Empleado, operacion : Operacion) : void;
 
 
     public asignarCliente(cliente: Cliente) {
